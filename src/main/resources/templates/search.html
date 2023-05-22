@@ -1,0 +1,167 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="test.css" rel="stylesheet" type="text/css"/>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            background-image: linear-gradient(rgba(0,8,50,0.8),rgba(0,8,50,0.8)), url(tpoto/5.jpg);
+            background-size: cover;
+            padding: 30px;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 400px;
+
+            background: rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            background-position: center;
+            border-radius: 200px;
+            padding: 10px 10px;
+        }
+
+        input {
+            background: transparent;
+            flex: 1;
+            border: 0;
+            outline: none;
+            padding: 24px 20px;
+            font-size: 30px;
+
+            color: black;
+        }
+
+        ul#wrapper {
+            list-style: none;
+            display: inline-block;
+            width: 100%;
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        li {
+            width: 200px;
+            height: 100px;
+            background:rgba(255,255,255,0.2) ;
+            display: inline-block;
+            margin: 10px;
+            box-shadow: 0 2px 3px rgba(255,255,255,0.2);
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        a {
+            font-size: 24px;
+            color: black;
+            line-height: 100px;
+            font-family: monospace;
+            text-decoration: none;
+        }
+
+        .img {
+            height: 150px;
+            width: 200px;
+        }
+        ::placeholder{
+
+            color: black;
+            font-family: 'poppins',sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search-bar">
+        <input type="text" name="search" value="" autocomplete="off" id="myinput" onkeyup="searchFunction()" placeholder="Search Your Cinema Hall">
+       
+
+    </div>
+    <ul id="wrapper">
+
+        <li>
+            <a href="#" >LIBERTY CINEMA</a>
+            <img src="https://www.linkpicture.com/q/2_611.jpg " class="img">
+        </li>
+        <li>
+            <a href="#" >MAJESTIC CINEMA</a>
+            <img src="https://www.linkpicture.com/q/3_443.jpg " class="img">
+        </li>
+        <li>
+            <a href="#" >PVR CINEMA</a>
+            <img src="https://www.linkpicture.com/q/4_359.jpg" class="img">
+        </li>
+        <li>
+            <a href="#" >RUHUNU CINEMA</a>
+            <img src="https://www.linkpicture.com/q/6_202.jpg" class="img">
+        </li>
+        <li>
+            <a href="#" >QUEENS CINEMA</a>
+            <img src="https://www.linkpicture.com/q/7_79.jpg " class="img">
+        </li>
+        <li>
+            <a href="#" >PRINCE CINEMA</a>
+            <img src="https://www.linkpicture.com/q/8_60.jpg" class="img">
+        </li>
+        <li>
+            <a href="#" >ROXY CINEMA</a>
+            <img src="https://www.linkpicture.com/q/9_59.jpg " class="img">
+        </li>
+        <li>
+            <a href="#" >WEMBLY CINEMA</a>
+            <img src="https://www.linkpicture.com/q/10_59.jpg" class="img">
+        </li>
+        <li>
+            <a href="#" >REGAL  CINEMA</a>
+            <img src="https://www.linkpicture.com/q/2_622.jpg " class="img">
+        </li>
+        <li>
+            <a href="#" >OCEAN CINEMA</a>
+            <img src="https://www.linkpicture.com/q/5_371.jpg " class="img">
+        </li>
+        <li>
+            <a href="#" >HOUST CINEMA</a>
+            <img src="https://www.linkpicture.com/q/3_1_1.jpg" class="img">
+        </li>
+        <li>
+            <a href="#" >KEGALLE CINEMA</a>
+            <img src="https://www.linkpicture.com/q/8_63.jpg " class="img">
+        </li>
+
+
+    </ul>
+
+    <script>
+        
+    function searchFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById('myinput');
+    filter = input.value.toUpperCase();
+    ul = document.getElementById('wrapper');
+    li = ul.getElementsByTagName('li');
+
+    for(i=0 ; i< li.length; i++){
+        a = li[i].getElementsByTagName('a')[0];
+        if(a.innerHTML.toUpperCase().indexOf(filter) > -1){
+            li[i].style.display = "";
+        }
+
+        else{
+            li[i].style.display = 'none';
+        }
+    }
+}
+</script>
+
+</body>
+
+</html>

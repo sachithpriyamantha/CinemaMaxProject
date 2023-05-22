@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>feedback Form</title>
+
+
+    <!--Fonts Link-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">  
+
+    <!--Icons link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+            outline: none;
+        }
+
+        section{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: url("https://www.linkpicture.com/q/BG1.jpg");
+            background-size: cover;
+            background-position: center;
+            filter: blur(2px) brightness(70%);
+        }
+
+        body{
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container{
+            width: 360px;
+            background: #5fbff9;
+            box-shadow: 0 0 20px rgba(250, 250, 250, 0.6);
+            opacity: 0.7;
+            border-radius: 10px;
+        }
+
+
+        .container form{
+            text-align: center;
+            padding: 25px 20px;
+            width: 100%;
+
+        }
+
+        form h2{
+            padding: 10px 0;
+        }
+
+        form .id{
+            position: relative;
+        }
+
+        .id i{
+            position: absolute;
+            font-size: 20px;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+
+        form input{
+            width: 100%;
+            height: 50px;
+            margin: 4px 0;
+            border: 1px solid dimgrey;
+            border-radius: 12px;
+            background: #181717;
+            padding: 0 15px;
+            padding-right: 45px;
+            font-size: 20px;
+        }
+
+        form textarea{
+            padding: 5px 15px;
+            border:  1px solid#5c5c5c;
+            border-radius: 12px;
+            background: #181717;
+            font-size: 20px;
+            width: 100%;
+            margin: 4px 0;
+        }
+
+        form .submit{
+            margin-top: 5px;
+            border: none;
+            background: #00fff0;
+            color: #222;
+            padding: 10px 0;
+            width: 100%;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        form .submit:hover{
+            background-color: black;
+            color: white;
+        }
+
+        form input:focus,form textarea:focus{
+            color: #00fff0;
+            border: 1px solid #00fff0;
+            transition:  all 0.3s ease;
+        }
+
+        form input:focus::placeholder,form textarea:focus::placeholder{
+            color: #00fff0;
+            padding-left: 4px;
+            transition:  all 0.3s ease;
+        }
+
+        form input:focus + i{
+            color: #00fff0;
+            transition:  all 0.3s ease;
+        }
+    </style>
+
+</head>
+<body>
+
+    <section></section>
+    <div class="container">
+        <form th:action="${url}" th:method="post" th:object="${feedback_data}">
+            <h2>Type your feedback here!</h2>
+
+            <div class="id">
+                <input type="text" id="name" placeholder="Username" required th:field="*{name}">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            
+            <div class="id">
+                <input type="email" id="email" placeholder="Your Email" required th:field="*{email}">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+
+            <textarea rows="4" placeholder="Message..." id="message" required th:field="*{message}"></textarea>
+
+            <input type="submit" class="submit" value="Send">
+            
+        </form>
+    </div>
+</body>
+</html>

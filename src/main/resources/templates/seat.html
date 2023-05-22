@@ -1,0 +1,2032 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>seat booking</title>
+    <link th:href="@{/styles/style.css}" rel="stylesheet" />
+    <style>
+        table, th, td {
+            border: 1px solid #284b1b;
+        }
+        .checkbox-wrapper-26 * {
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+        .checkbox-wrapper-26 input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkbox-wrapper-26 label {
+            --size: 50px;
+            --shadow: calc(var(--size) * .07) calc(var(--size) * .1);
+
+            position: relative;
+            display: block;
+            width: var(--size);
+            height: var(--size);
+            margin: 0 auto;
+            background-color: #f72414;
+            border-radius: 50%;
+            box-shadow: 0 var(--shadow) #ffbeb8;
+            cursor: pointer;
+            transition: 0.2s ease transform, 0.2s ease background-color,
+            0.2s ease box-shadow;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .checkbox-wrapper-26 label:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            left: 0;
+            width: calc(var(--size) * .7);
+            height: calc(var(--size) * .7);
+            margin: 0 auto;
+            background-color: #fff;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            box-shadow: inset 0 var(--shadow) #ffbeb8;
+            transition: 0.2s ease width, 0.2s ease height;
+        }
+
+        .checkbox-wrapper-26 label:hover:before {
+            width: calc(var(--size) * .55);
+            height: calc(var(--size) * .55);
+            box-shadow: inset 0 var(--shadow) #ff9d96;
+        }
+
+        .checkbox-wrapper-26 label:active {
+            transform: scale(0.9);
+        }
+
+        .checkbox-wrapper-26 .tick_mark {
+            position: absolute;
+            top: -1px;
+            right: 0;
+            left: calc(var(--size) * -.05);
+            width: calc(var(--size) * .6);
+            height: calc(var(--size) * .6);
+            margin: 0 auto;
+            margin-left: calc(var(--size) * .14);
+            transform: rotateZ(-40deg);
+        }
+
+        .checkbox-wrapper-26 .tick_mark:before,
+        .checkbox-wrapper-26 .tick_mark:after {
+            content: "";
+            position: absolute;
+            background-color: #fff;
+            border-radius: 2px;
+            opacity: 0;
+            transition: 0.2s ease transform, 0.2s ease opacity;
+        }
+
+        .checkbox-wrapper-26 .tick_mark:before {
+            left: 0;
+            bottom: 0;
+            width: calc(var(--size) * .1);
+            height: calc(var(--size) * .3);
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.23);
+            transform: translateY(calc(var(--size) * -.68));
+        }
+
+        .checkbox-wrapper-26 .tick_mark:after {
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: calc(var(--size) * .1);
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.23);
+            transform: translateX(calc(var(--size) * .78));
+        }
+
+        .checkbox-wrapper-26 input[type="checkbox"]:checked + label {
+            background-color: #07d410;
+            box-shadow: 0 var(--shadow) #92ff97;
+        }
+
+        .checkbox-wrapper-26 input[type="checkbox"]:checked + label:before {
+            width: 0;
+            height: 0;
+        }
+
+        .checkbox-wrapper-26 input[type="checkbox"]:checked + label .tick_mark:before,
+        .checkbox-wrapper-26 input[type="checkbox"]:checked + label .tick_mark:after {
+            transform: translate(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+  <body>
+  <ul>
+      <li><a href="http://localhost:8080/home">Home</a></li>
+      <li><a href="http://localhost:8080/home">Movies</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="http://localhost:8080/about">About</a></li>
+      <li><a class="active" href="http://localhost:8080/seats">Book a seat</a> </li>
+  </ul>
+  <br>
+  <br>
+  <br>
+  <form th:action="${'http://127.0.0.1:8080/seats/bookSeat/'+url}" th:method="post" th:object="${userSeat}">
+      <label>
+
+          <div style="text-align: left;"><button class="button-92" role="button"><h1 th:text="${filmName}"/></button></div>
+
+          <br>
+          <br>
+          <br>
+
+      </label>
+
+        <table style="margin-left: auto;margin-right: auto">
+            <th>
+                <td>
+
+                </td>
+            <td style="color: white;">
+                1
+            </td>
+            <td style="color: white;">
+                2
+            </td>
+            <td style="color: white;">
+                3
+            </td>
+            <td style="color: white;">
+                4
+            </td>
+            <td style="color: white;">
+                5
+            </td>
+            <td style="color: white;">
+                6
+            </td>
+            <td style="color: white;">
+                7
+            </td>
+            <td style="color: white;">
+                8
+            </td>
+            <td style="color: white;">
+                9
+            </td>
+            <td style="color: white;">
+                10
+            </td>
+            <td style="color: white;">
+                11
+            </td>
+            <td style="color: white;">
+                12
+            </td>
+            <td style="color: white;">
+                13
+            </td>
+            <td style="color: white;">
+                14
+            </td>
+            </th>
+            <tr>
+                <td style="color: white;">
+                    A
+                </td>
+                <td>
+
+                </td>
+                <td th:each="seats :${listOfSeats}">
+                    <span th:if="${seats.seat_no == 1}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat01" type="checkbox" name="seat01" disabled/>
+                                <label for="seat01">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat0101" type="checkbox" name="seat012" th:checked="*{seat01}" />
+                                <label for="seat0101">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats2}">
+                    <span th:if="${seats.seat_no == 2}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat02" type="checkbox" name="seat02" th:checked="*{seat02}" disabled/>
+                                <label for="seat02">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                                <div class="checkbox-wrapper-26">
+                                    <input id="seat0202" type="checkbox" name="seat02" th:checked="*{seat02}"/>
+                                    <label for="seat0202">
+                                        <div class="tick_mark"></div>
+                                    </label>
+                                </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats3}">
+                    <span th:if="${seats.seat_no == 3}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat03" type="checkbox" name="seat03" th:checked="*{seat03}" disabled/>
+                                <label for="seat03">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat0303" type="checkbox" name="seat03" th:checked="*{seat03}"/>
+                                <label for="seat0303">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats4}">
+                    <span th:if="${seats.seat_no == 4}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat04" type="checkbox" name="seat04" th:checked="*{seat04}" disabled/>
+                                <label for="seat04">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat0404" type="checkbox" name="seat04" th:checked="*{seat04}" />
+                                <label for="seat0404">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats5}">
+                    <span th:if="${seats.seat_no == 5}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat05" type="checkbox" name="seat05" th:checked="*{seat05}" disabled/>
+                                <label for="seat05">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat0505" type="checkbox" name="seat05" th:checked="*{seat05}" />
+                                <label for="seat0505">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats6}">
+                    <span th:if="${seats.seat_no == 6}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat06" type="checkbox" name="seat06" th:checked="*{seat06}" disabled/>
+                                <label for="seat06">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat0606" type="checkbox" name="seat06" th:checked="*{seat06}" />
+                                <label for="seat0606">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats7}">
+                    <span th:if="${seats.seat_no == 7}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat07" type="checkbox" name="seat07" th:checked="*{seat07}" disabled/>
+                                <label for="seat07">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat0707" type="checkbox" name="seat07" th:checked="*{seat07}" />
+                                <label for="seat0707">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats8}">
+                    <span th:if="${seats.seat_no == 8}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat08" type="checkbox" name="seat08" th:checked="*{seat08}" disabled/>
+                                <label for="seat08">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat0808" type="checkbox" name="seat08" th:checked="*{seat08}" />
+                                <label for="seat0808">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats9}">
+                    <span th:if="${seats.seat_no == 9}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat09" type="checkbox" name="seat09" th:checked="*{seat09}" disabled/>
+                                <label for="seat09">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat0909" type="checkbox" name="seat09" th:checked="*{seat09}" />
+                                <label for="seat0909">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats10}">
+                    <span th:if="${seats.seat_no == 10}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat10" type="checkbox" name="seat10" th:checked="*{seat10}" disabled/>
+                                <label for="seat10">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1010" type="checkbox" name="seat10" th:checked="*{seat10}" />
+                                <label for="seat1010">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats11}">
+                    <span th:if="${seats.seat_no == 11}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat11" type="checkbox" name="seat11" th:checked="*{seat11}" disabled/>
+                                <label for="seat11">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1111" type="checkbox" name="seat11" th:checked="*{seat11}" />
+                                <label for="seat11">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats12}">
+                    <span th:if="${seats.seat_no == 12}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat12" type="checkbox" name="seat12" th:checked="*{seat12}" disabled/>
+                                <label for="seat12">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1212" type="checkbox" name="seat12" th:checked="*{seat12}" />
+                                <label for="seat1212">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats13}">
+                    <span th:if="${seats.seat_no == 13}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat13" type="checkbox" name="seat13" th:checked="*{seat13}" disabled/>
+                                <label for="seat13">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1313" type="checkbox" name="seat13" th:checked="*{seat13}" />
+                                <label for="seat1313">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats14}">
+                    <span th:if="${seats.seat_no == 14}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat14" type="checkbox" name="seat14" th:checked="*{seat14}" disabled/>
+                                <label for="seat14">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1414" type="checkbox" name="seat14" th:checked="*{seat14}" />
+                                <label for="seat1414">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: white;">
+                    B
+                </td>
+                <td>
+
+                </td>
+                <td th:each="seats :${listOfSeats15}">
+                    <span th:if="${seats.seat_no == 15}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat15" type="checkbox" name="seat15" th:checked="*{seat15}" disabled/>
+                                <label for="seat15">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1515" type="checkbox" name="seat15" th:checked="*{seat15}" />
+                                <label for="seat1515">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats16}">
+                    <span th:if="${seats.seat_no == 16}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat16" type="checkbox" name="seat16" th:checked="*{seat16}" disabled/>
+                                <label for="seat16">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1616" type="checkbox" name="seat16" th:checked="*{seat16}" />
+                                <label for="seat1616">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                </td>
+                <td th:each="seats :${listOfSeats17}">
+                    <span th:if="${seats.seat_no == 17}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat17" type="checkbox" name="seat17" th:checked="*{seat17}" disabled/>
+                                <label for="seat17">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1717" type="checkbox" name="seat17" th:checked="*{seat17}" />
+                                <label for="seat1717">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats18}">
+                    <span th:if="${seats.seat_no == 18}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat18" type="checkbox" name="seat18" th:checked="*{seat18}" disabled/>
+                                <label for="seat18">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1818" type="checkbox" name="seat18" th:checked="*{seat18}" />
+                                <label for="seat1818">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats19}">
+                    <span th:if="${seats.seat_no == 19}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat19" type="checkbox" name="seat19" th:checked="*{seat19}" disabled/>
+                                <label for="seat19">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat1919" type="checkbox" name="seat19" th:checked="*{seat19}" />
+                                <label for="seat1919">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats20}">
+                    <span th:if="${seats.seat_no == 20}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat20" type="checkbox" name="seat20" th:checked="*{seat20}" disabled/>
+                                <label for="seat20">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2020" type="checkbox" name="seat20" th:checked="*{seat20}" />
+                                <label for="seat2020">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats21}">
+                    <span th:if="${seats.seat_no == 21}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat21" type="checkbox" name="seat21" th:checked="*{seat21}" disabled/>
+                                <label for="seat21">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2121" type="checkbox" name="seat21" th:checked="*{seat21}" />
+                                <label for="seat2121">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats22}">
+                    <span th:if="${seats.seat_no == 22}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat22" type="checkbox" name="seat22" th:checked="*{seat22}" disabled/>
+                                <label for="seat22">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2222" type="checkbox" name="seat22" th:checked="*{seat22}" />
+                                <label for="seat2222">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats23}">
+                    <span th:if="${seats.seat_no == 23}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat23" type="checkbox" name="seat23" th:checked="*{seat23}" disabled/>
+                                <label for="seat23">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2323" type="checkbox" name="seat23" th:checked="*{seat23}" />
+                                <label for="seat2323">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats24}">
+                    <span th:if="${seats.seat_no == 24}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat24" type="checkbox" name="seat24" th:checked="*{seat24}" disabled/>
+                                <label for="seat24">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2424" type="checkbox" name="seat24" th:checked="*{seat24}" />
+                                <label for="seat2424">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats25}">
+                    <span th:if="${seats.seat_no == 25}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat25" type="checkbox" name="seat25" th:checked="*{seat25}" disabled/>
+                                <label for="seat25">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2525" type="checkbox" name="seat25" th:checked="*{seat25}" />
+                                <label for="seat2525">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats26}">
+                    <span th:if="${seats.seat_no == 26}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat26" type="checkbox" name="seat26" th:checked="*{seat26}" disabled/>
+                                <label for="seat26">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2626" type="checkbox" name="seat26" th:checked="*{seat26}" />
+                                <label for="seat2626">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats27}">
+                    <span th:if="${seats.seat_no == 27}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat27" type="checkbox" name="seat27" th:checked="*{seat27}" disabled/>
+                                <label for="seat27">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2727" type="checkbox" name="seat27" th:checked="*{seat27}" />
+                                <label for="seat2727">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats28}">
+                    <span th:if="${seats.seat_no == 28}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat28" type="checkbox" name="seat28" th:checked="*{seat28}" disabled/>
+                                <label for="seat28">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2828" type="checkbox" name="seat28" th:checked="*{seat28}" />
+                                <label for="seat2828">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: white;">
+                    C
+                </td>
+                <td>
+
+                </td>
+                <td th:each="seats :${listOfSeats29}">
+                    <span th:if="${seats.seat_no == 29}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat29" type="checkbox" name="seat29" th:checked="*{seat29}" disabled/>
+                                <label for="seat29">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat2929" type="checkbox" name="seat29" th:checked="*{seat29}" />
+                                <label for="seat2929">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats30}">
+                    <span th:if="${seats.seat_no == 30}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat30" type="checkbox" name="seat30" th:checked="*{seat30}" disabled/>
+                                <label for="seat30">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3030" type="checkbox" name="seat30" th:checked="*{seat30}" />
+                                <label for="seat30">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats31}">
+                    <span th:if="${seats.seat_no == 31}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat31" type="checkbox" name="seat31" th:checked="*{seat31}" disabled/>
+                                <label for="seat31">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3131" type="checkbox" name="seat31" th:checked="*{seat31}" />
+                                <label for="seat3131">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats32}">
+                    <span th:if="${seats.seat_no == 32}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat32" type="checkbox" name="seat32" th:checked="*{seat32}" disabled/>
+                                <label for="seat32">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3232" type="checkbox" name="seat32" th:checked="*{seat32}" />
+                                <label for="seat3232">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats33}">
+                    <span th:if="${seats.seat_no == 33}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat33" type="checkbox" name="seat33" th:checked="*{seat33}" disabled/>
+                                <label for="seat33">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3333" type="checkbox" name="seat33" th:checked="*{seat33}" />
+                                <label for="seat3333">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats34}">
+                    <span th:if="${seats.seat_no == 34}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat34" type="checkbox" name="seat34" th:checked="*{seat34}" disabled/>
+                                <label for="seat34">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3434" type="checkbox" name="seat34" th:checked="*{seat34}" />
+                                <label for="seat3434">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats35}">
+                    <span th:if="${seats.seat_no == 35}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat35" type="checkbox" name="seat35" th:checked="*{seat35}" disabled/>
+                                <label for="seat35">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3535" type="checkbox" name="seat35" th:checked="*{seat35}" />
+                                <label for="seat3535">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats36}">
+                    <span th:if="${seats.seat_no == 36}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat36" type="checkbox" name="seat36" th:checked="*{seat36}" disabled/>
+                                <label for="seat36">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3636" type="checkbox" name="seat36" th:checked="*{seat36}" />
+                                <label for="seat3636">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats37}">
+                    <span th:if="${seats.seat_no == 37}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat37" type="checkbox" name="seat37" th:checked="*{seat37}" disabled/>
+                                <label for="seat37">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3737" type="checkbox" name="seat37" th:checked="*{seat37}" />
+                                <label for="seat3737">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats38}">
+                    <span th:if="${seats.seat_no == 38}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat38" type="checkbox" name="seat38" th:checked="*{seat38}" disabled/>
+                                <label for="seat38">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3838" type="checkbox" name="seat38" th:checked="*{seat38}" />
+                                <label for="seat3838">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats39}">
+                    <span th:if="${seats.seat_no == 39}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat39" type="checkbox" name="seat39" th:checked="*{seat39}" disabled/>
+                                <label for="seat39">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat3939" type="checkbox" name="seat39" th:checked="*{seat39}" />
+                                <label for="seat3939">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats40}">
+                    <span th:if="${seats.seat_no == 40}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat40" type="checkbox" name="seat40" th:checked="*{seat40}" disabled/>
+                                <label for="seat40">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4040" type="checkbox" name="seat40" th:checked="*{seat40}" />
+                                <label for="seat4040">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats41}">
+                    <span th:if="${seats.seat_no == 41}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat41" type="checkbox" name="seat41" th:checked="*{seat41}" disabled/>
+                                <label for="seat41">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4141" type="checkbox" name="seat41" th:checked="*{seat41}" />
+                                <label for="seat4141">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats42}">
+                    <span th:if="${seats.seat_no == 42}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat42" type="checkbox" name="seat42" th:checked="*{seat42}" disabled/>
+                                <label for="seat42">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4242" type="checkbox" name="seat42" th:checked="*{seat42}" />
+                                <label for="seat4242">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: white;">
+                    D
+                </td>
+                <td>
+
+                </td>
+                <td th:each="seats :${listOfSeats43}">
+                    <span th:if="${seats.seat_no == 43}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat43" type="checkbox" name="seat43" th:checked="*{seat43}" disabled/>
+                                <label for="seat43">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4343" type="checkbox" name="seat43" th:checked="*{seat43}" />
+                                <label for="seat4343">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats44}">
+                    <span th:if="${seats.seat_no == 44}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat44" type="checkbox" name="seat44" th:checked="*{seat44}" disabled/>
+                                <label for="seat44">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4444" type="checkbox" name="seat44" th:checked="*{seat44}" />
+                                <label for="seat4444">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats45}">
+                    <span th:if="${seats.seat_no == 45}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat45" type="checkbox" name="seat45" th:checked="*{seat45}" disabled/>
+                                <label for="seat45">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4545" type="checkbox" name="seat45" th:checked="*{seat45}" />
+                                <label for="seat4545">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats46}">
+                    <span th:if="${seats.seat_no == 46}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat46" type="checkbox" name="seat46" th:checked="*{seat46}" disabled/>
+                                <label for="seat46">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4646" type="checkbox" name="seat46" th:checked="*{seat46}" />
+                                <label for="seat4646">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats47}">
+                    <span th:if="${seats.seat_no == 47}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat47" type="checkbox" name="seat47" th:checked="*{seat47}" disabled/>
+                                <label for="seat47">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4747" type="checkbox" name="seat47" th:checked="*{seat47}" />
+                                <label for="seat4747">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats48}">
+                    <span th:if="${seats.seat_no == 48}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat48" type="checkbox" name="seat48" th:checked="*{seat48}" disabled/>
+                                <label for="seat48">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4848" type="checkbox" name="seat48" th:checked="*{seat48}" />
+                                <label for="seat4848">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats49}">
+                    <span th:if="${seats.seat_no == 49}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat49" type="checkbox" name="seat49" th:checked="*{seat49}" disabled/>
+                                <label for="seat49">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat4949" type="checkbox" name="seat49" th:checked="*{seat49}" />
+                                <label for="seat4949">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats50}">
+                    <span th:if="${seats.seat_no == 50}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat50" type="checkbox" name="seat50" th:checked="*{seat50}" disabled/>
+                                <label for="seat50">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5050" type="checkbox" name="seat50" th:checked="*{seat50}" />
+                                <label for="seat5050">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats51}">
+                    <span th:if="${seats.seat_no == 51}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat51" type="checkbox" name="seat51" th:checked="*{seat51}" disabled/>
+                                <label for="seat51">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5151" type="checkbox" name="seat51" th:checked="*{seat51}" />
+                                <label for="seat5151">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats52}">
+                    <span th:if="${seats.seat_no == 52}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat52" type="checkbox" name="seat52" th:checked="*{seat52}" disabled/>
+                                <label for="seat52">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5252" type="checkbox" name="seat52" th:checked="*{seat52}" />
+                                <label for="seat5252">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats53}">
+                    <span th:if="${seats.seat_no == 53}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat53" type="checkbox" name="seat53" th:checked="*{seat53}" disabled/>
+                                <label for="seat53">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5353" type="checkbox" name="seat53" th:checked="*{seat53}" />
+                                <label for="seat5353">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats54}">
+                    <span th:if="${seats.seat_no == 54}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat54" type="checkbox" name="seat54" th:checked="*{seat54}" disabled/>
+                                <label for="seat54">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5454" type="checkbox" name="seat54" th:checked="*{seat54}" />
+                                <label for="seat5454">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats55}">
+                    <span th:if="${seats.seat_no == 55}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat55" type="checkbox" name="seat55" th:checked="*{seat55}" disabled/>
+                                <label for="seat55">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5555" type="checkbox" name="seat55" th:checked="*{seat55}" />
+                                <label for="seat5555">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats56}">
+                    <span th:if="${seats.seat_no == 56}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat56" type="checkbox" name="seat56" th:checked="*{seat56}" disabled/>
+                                <label for="seat56">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5656" type="checkbox" name="seat56" th:checked="*{seat56}" />
+                                <label for="seat5656">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: white;">
+                    E
+                </td>
+                <td>
+
+                </td>
+                <td th:each="seats :${listOfSeats57}">
+                    <span th:if="${seats.seat_no == 57}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat57" type="checkbox" name="seat57" th:checked="*{seat57}" disabled/>
+                                <label for="seat57">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5757" type="checkbox" name="seat57" th:checked="*{seat57}" />
+                                <label for="seat5757">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats58}">
+                    <span th:if="${seats.seat_no == 58}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat58" type="checkbox" name="seat58" th:checked="*{seat58}" disabled/>
+                                <label for="seat58">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5858" type="checkbox" name="seat58" th:checked="*{seat58}" />
+                                <label for="seat5858">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats59}">
+                    <span th:if="${seats.seat_no == 59}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat59" type="checkbox" name="seat59" th:checked="*{seat59}" disabled/>
+                                <label for="seat59">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat5959" type="checkbox" name="seat59" th:checked="*{seat59}" />
+                                <label for="seat5959">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats60}">
+                    <span th:if="${seats.seat_no == 60}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat60" type="checkbox" name="seat60" th:checked="*{seat60}" disabled/>
+                                <label for="seat60">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6060" type="checkbox" name="seat60" th:checked="*{seat60}" />
+                                <label for="seat6060">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats61}">
+                    <span th:if="${seats.seat_no == 61}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat61" type="checkbox" name="seat61" th:checked="*{seat61}" disabled/>
+                                <label for="seat61">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6161" type="checkbox" name="seat61" th:checked="*{seat61}" />
+                                <label for="seat6161">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats62}">
+                    <span th:if="${seats.seat_no == 62}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat62" type="checkbox" name="seat62" th:checked="*{seat62}" disabled/>
+                                <label for="seat62">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6262" type="checkbox" name="seat62" th:checked="*{seat62}" />
+                                <label for="seat6262">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats63}">
+                    <span th:if="${seats.seat_no == 63}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat63" type="checkbox" name="seat63" th:checked="*{seat63}" disabled/>
+                                <label for="seat63">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6363" type="checkbox" name="seat63" th:checked="*{seat63}" />
+                                <label for="seat6363">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats64}">
+                    <span th:if="${seats.seat_no == 64}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat64" type="checkbox" name="seat64" th:checked="*{seat64}" disabled/>
+                                <label for="seat64">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6464" type="checkbox" name="seat64" th:checked="*{seat64}" />
+                                <label for="seat6464">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats65}">
+                    <span th:if="${seats.seat_no == 65}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat65" type="checkbox" name="seat65" th:checked="*{seat65}" disabled/>
+                                <label for="seat65">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6565" type="checkbox" name="seat65" th:checked="*{seat65}" />
+                                <label for="seat6565">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats66}">
+                    <span th:if="${seats.seat_no == 66}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat66" type="checkbox" name="seat66" th:checked="*{seat66}" disabled/>
+                                <label for="seat66">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6666" type="checkbox" name="seat66" th:checked="*{seat66}" />
+                                <label for="seat6666">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats67}">
+                    <span th:if="${seats.seat_no == 67}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat67" type="checkbox" name="seat67" th:checked="*{seat67}" disabled/>
+                                <label for="seat67">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6767" type="checkbox" name="seat67" th:checked="*{seat67}" disabled/>
+                                <label for="seat6767">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats68}">
+                    <span th:if="${seats.seat_no == 68}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat68" type="checkbox" name="seat68" th:checked="*{seat68}" disabled/>
+                                <label for="seat68">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6868" type="checkbox" name="seat68" th:checked="*{seat68}" />
+                                <label for="seat6868">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats69}">
+                    <span th:if="${seats.seat_no == 69}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat69" type="checkbox" name="seat69" th:checked="*{seat69}" disabled/>
+                                <label for="seat69">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat6969" type="checkbox" name="seat69" th:checked="*{seat69}" />
+                                <label for="seat6969">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats70}">
+                    <span th:if="${seats.seat_no == 70}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat70" type="checkbox" name="seat70" th:checked="*{seat70}" disabled/>
+                                <label for="seat70">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7070" type="checkbox" name="seat70" th:checked="*{seat70}" />
+                                <label for="seat7070">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: white;">
+                    F
+                </td>
+                <td>
+
+                </td>
+                <td th:each="seats :${listOfSeats71}">
+                    <span th:if="${seats.seat_no == 71}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat71" type="checkbox" name="seat71" th:checked="*{seat71}" disabled/>
+                                <label for="seat71">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7171" type="checkbox" name="seat71" th:checked="*{seat71}" />
+                                <label for="seat7171">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats72}">
+                    <span th:if="${seats.seat_no == 72}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat72" type="checkbox" name="seat72" th:checked="*{seat72}" disabled/>
+                                <label for="seat72">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7272" type="checkbox" name="seat72" th:checked="*{seat72}" />
+                                <label for="seat7272">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats73}">
+                    <span th:if="${seats.seat_no == 73}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat73" type="checkbox" name="seat73" th:checked="*{seat73}" disabled/>
+                                <label for="seat73">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7373" type="checkbox" name="seat73" th:checked="*{seat73}" />
+                                <label for="seat7373">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats74}">
+                    <span th:if="${seats.seat_no == 74}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7474" type="checkbox" name="seat74" th:checked="*{seat74}" disabled/>
+                                <label for="seat7474">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat74" type="checkbox" name="seat74" th:checked="*{seat74}" />
+                                <label for="seat74">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats75}">
+                    <span th:if="${seats.seat_no == 75}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat75" type="checkbox" name="seat75" th:checked="*{seat75}" disabled/>
+                                <label for="seat75">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7575" type="checkbox" name="seat75" th:checked="*{seat75}" />
+                                <label for="seat7575">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats76}">
+                    <span th:if="${seats.seat_no == 76}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat76" type="checkbox" name="seat76" th:checked="*{seat76}" disabled/>
+                                <label for="seat76">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7676" type="checkbox" name="seat76" th:checked="*{seat76}" />
+                                <label for="seat7676">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats77}">
+                    <span th:if="${seats.seat_no == 77}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat77" type="checkbox" name="seat77" th:checked="*{seat77}" disabled/>
+                                <label for="seat77">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7777" type="checkbox" name="seat77" th:checked="*{seat77}" />
+                                <label for="seat7777">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats78}">
+                    <span th:if="${seats.seat_no == 78}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat78" type="checkbox" name="seat78" th:checked="*{seat78}" disabled/>
+                                <label for="seat78">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7878" type="checkbox" name="seat78" th:checked="*{seat78}" />
+                                <label for="seat7878">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats79}">
+                    <span th:if="${seats.seat_no == 79}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat79" type="checkbox" name="seat79" th:checked="*{seat79}" disabled/>
+                                <label for="seat79">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat7979" type="checkbox" name="seat79" th:checked="*{seat79}" />
+                                <label for="seat7979">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats80}">
+                    <span th:if="${seats.seat_no == 80}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat80" type="checkbox" name="seat80" th:checked="*{seat80}" disabled/>
+                                <label for="seat80">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat8080" type="checkbox" name="seat80" th:checked="*{seat80}" />
+                                <label for="seat8080">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats81}">
+                    <span th:if="${seats.seat_no == 81}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat81" type="checkbox" name="seat81" th:checked="*{seat81}" disabled/>
+                                <label for="seat81">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat8181" type="checkbox" name="seat81" th:checked="*{seat81}" />
+                                <label for="seat8181">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats82}">
+                    <span th:if="${seats.seat_no == 82}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat82" type="checkbox" name="seat82" th:checked="*{seat82}" disabled/>
+                                <label for="seat82">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat8282" type="checkbox" name="seat82" th:checked="*{seat82}" />
+                                <label for="seat8282">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats83}">
+                    <span th:if="${seats.seat_no == 83}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat83" type="checkbox" name="seat83" th:checked="*{seat83}" disabled/>
+                                <label for="seat83">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat8383" type="checkbox" name="seat83" th:checked="*{seat83}" />
+                                <label for="seat8383">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats84}">
+                    <span th:if="${seats.seat_no == 84}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat84" type="checkbox" name="seat84" th:checked="*{seat84}" disabled/>
+                                <label for="seat84">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat8484" type="checkbox" name="seat84" th:checked="*{seat84}" />
+                                <label for="seat8484">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td style="color: white;">
+                    G
+                </td>
+                <td>
+
+                </td>
+                <td th:each="seats :${listOfSeats85}">
+                    <span th:if="${seats.seat_no == 85}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat85" type="checkbox" name="seat85" th:checked="*{seat85}" disabled/>
+                                <label for="seat85">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat8585" type="checkbox" name="seat85" th:checked="*{seat85}" />
+                                <label for="seat8585">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats86}">
+                    <span th:if="${seats.seat_no == 86}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat86" type="checkbox" name="seat86" th:checked="*{seat86}" disabled/>
+                                <label for="seat86">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat8686" type="checkbox" name="seat86" th:checked="*{seat86}" />
+                                <label for="seat8686">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats87}">
+                    <span th:if="${seats.seat_no == 87}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat87" type="checkbox" name="seat87" th:checked="*{seat87}" disabled/>
+                                <label for="seat87">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat8787" type="checkbox" name="seat87" th:checked="*{seat87}" />
+                                <label for="seat8787">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+                <td th:each="seats :${listOfSeats88}">
+                    <span th:if="${seats.seat_no == 88}">
+                        <span th:if="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat88" type="checkbox" name="seat88" th:checked="*{seat88}" disabled/>
+                                <label for="seat88">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                        <span th:unless="${seats.status}">
+                            <div class="checkbox-wrapper-26">
+                                <input id="seat8888" type="checkbox" name="seat88" th:checked="*{seat88}"/>
+                                <label for="seat8888">
+                                    <div class="tick_mark"></div>
+                                </label>
+                            </div>
+                        </span>
+                    </span>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+
+        <div class="flip-box" style="margin-left:auto;margin-right: auto;">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <h2>Screen</h2>
+                </div>
+                <div class="flip-box-back">
+                    <h2>Screen</h2>
+                </div>
+            </div>
+        </div>
+
+
+
+      <!--<button type="submit">submit</button>-->
+      <center><button class="button-73" role="button">Submit</button></center>
+
+      </label>
+    </form>
+  </body>
+</html>

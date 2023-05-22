@@ -1,0 +1,3135 @@
+@startuml
+participant Actor
+Actor -> UserController : login
+activate UserController
+create CheckUsers
+UserController -> CheckUsers : new
+activate CheckUsers
+CheckUsers --> UserController
+deactivate CheckUsers
+return
+participant Actor
+Actor -> UserController : register
+activate UserController
+create GetUsers
+UserController -> GetUsers : new
+activate GetUsers
+GetUsers --> UserController
+deactivate GetUsers
+return
+participant Actor
+Actor -> UserController : register_users
+activate UserController
+create Users
+UserController -> Users : new
+activate Users
+Users --> UserController
+deactivate Users
+UserController -> MailService : mailSend
+activate MailService
+MailService --> UserController
+deactivate MailService
+UserController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> UserController
+deactivate UserRepo
+create Mail
+UserController -> Mail : new
+activate Mail
+Mail --> UserController
+deactivate Mail
+create CheckUsers
+UserController -> CheckUsers : new
+activate CheckUsers
+CheckUsers --> UserController
+deactivate CheckUsers
+return
+participant Actor
+Actor -> UserController : checkUsers
+activate UserController
+UserController -> UserRepo : pass
+activate UserRepo
+UserRepo --> UserController
+deactivate UserRepo
+UserController -> UserRepo : findByEmailMatches
+activate UserRepo
+UserRepo --> UserController
+deactivate UserRepo
+UserController -> MailService : mailSend
+activate MailService
+MailService --> UserController
+deactivate MailService
+UserController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> UserController
+deactivate UserRepo
+create Mail
+UserController -> Mail : new
+activate Mail
+Mail --> UserController
+deactivate Mail
+return
+participant Actor
+Actor -> HomeController : about_us
+activate HomeController
+return
+participant Actor
+Actor -> HomeController : cinema_list
+activate HomeController
+return
+participant Actor
+Actor -> CookiesController : check_cookies
+activate CookiesController
+return
+participant Actor
+Actor -> ContactController : contact
+activate ContactController
+create ContactModels
+ContactController -> ContactModels : new
+activate ContactModels
+ContactModels --> ContactController
+deactivate ContactModels
+return
+participant Actor
+Actor -> ContactController : save_contact
+activate ContactController
+ContactController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> ContactController
+deactivate UserRepo
+create Contact
+ContactController -> Contact : new
+activate Contact
+Contact --> ContactController
+deactivate Contact
+return
+participant Actor
+Actor -> FeedbackController : feedback
+activate FeedbackController
+create FeedbackModels
+FeedbackController -> FeedbackModels : new
+activate FeedbackModels
+FeedbackModels --> FeedbackController
+deactivate FeedbackModels
+return
+participant Actor
+Actor -> FeedbackController : save_feedback
+activate FeedbackController
+FeedbackController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> FeedbackController
+deactivate UserRepo
+create Feedback
+FeedbackController -> Feedback : new
+activate Feedback
+Feedback --> FeedbackController
+deactivate Feedback
+return
+participant Actor
+Actor -> seatController : seats
+activate seatController
+create Cookies
+seatController -> Cookies : new
+activate Cookies
+Cookies --> seatController
+deactivate Cookies
+create BookSeat
+seatController -> BookSeat : new
+activate BookSeat
+BookSeat --> seatController
+deactivate BookSeat
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+seatController -> SeatRepo : getAllRecords
+activate SeatRepo
+SeatRepo --> seatController
+deactivate SeatRepo
+return
+
+participant Actor
+Actor -> seatController : getSeat
+activate seatController
+seatController -> CookiesRepo : getCookiesById
+activate CookiesRepo
+CookiesRepo --> seatController
+deactivate CookiesRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+seatController -> SeatsRepo : getSeatsByMovie_id
+activate SeatsRepo
+SeatsRepo --> seatController
+deactivate SeatsRepo
+seatController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> seatController
+deactivate UserRepo
+seatController -> MoviesRepo : getMovieByName
+activate MoviesRepo
+MoviesRepo --> seatController
+deactivate MoviesRepo
+create Seats
+seatController -> Seats : new
+activate Seats
+Seats --> seatController
+deactivate Seats
+create BookSeat
+seatController -> BookSeat : new
+activate BookSeat
+BookSeat --> seatController
+deactivate BookSeat
+return
+participant Actor
+Actor -> seatController : payment
+activate seatController
+return
+participant Actor
+Actor -> PaypalController : payment
+activate PaypalController
+PaypalController -> PaypalService : createPayment
+activate PaypalService
+PaypalService --> PaypalController
+deactivate PaypalService
+return
+participant Actor
+Actor -> PaypalController : cancelPay
+activate PaypalController
+PaypalController -> UserRepo : findByEmailMatches
+activate UserRepo
+UserRepo --> PaypalController
+deactivate UserRepo
+PaypalController -> MailService : mailSend
+activate MailService
+MailService --> PaypalController
+deactivate MailService
+PaypalController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> PaypalController
+deactivate UserRepo
+create Mail
+PaypalController -> Mail : new
+activate Mail
+Mail --> PaypalController
+deactivate Mail
+return
+participant Actor
+Actor -> PaypalController : successPay
+activate PaypalController
+PaypalController -> PaypalService : executePayment
+activate PaypalService
+PaypalService --> PaypalController
+deactivate PaypalService
+PaypalController -> UserRepo : findByEmailMatches
+activate UserRepo
+UserRepo --> PaypalController
+deactivate UserRepo
+PaypalController -> MailService : mailSend
+activate MailService
+MailService --> PaypalController
+deactivate MailService
+PaypalController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> PaypalController
+deactivate UserRepo
+create Mail
+PaypalController -> Mail : new
+activate Mail
+Mail --> PaypalController
+deactivate Mail
+PaypalController -> UserRepo : findByUsername
+activate UserRepo
+UserRepo --> PaypalController
+deactivate UserRepo
+create Payments
+PaypalController -> Payments : new
+activate Payments
+Payments --> PaypalController
+deactivate Payments
+return
+@enduml

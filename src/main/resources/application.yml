@@ -1,0 +1,35 @@
+spring:
+  profiles:
+    active: dev
+
+  application:
+    name: Max Cinema Project by Ravindu Priyankara
+  boot:
+    admin:
+      client:
+        url:  http://localhost:9000
+        enabled: true
+        auto-registration: true
+        instance:
+          name: ${spring.application.name:JSS}
+logging:
+  level:
+    root: INFO
+    eshop-dao: DEBUG
+    eshop-controller: INFO
+    eshop: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    configprops:
+      show-values: always
+    env:
+      show-values: always
+    loggers:
+      enabled: true

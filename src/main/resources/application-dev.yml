@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    username: postgres
+    password: ravindu
+    url: jdbc:postgresql://localhost:5432/MaxCinema
+  sql:
+    init:
+      mode: always

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Error 404</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .wrapper {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://www.linkpicture.com/q/bg_34.jpg');
+            min-height: 100vh;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .wrapper h1 {
+            font-size: 8rem;
+            background: #12c2e9;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9);  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+
+        }
+
+        .wrapper p {
+            color: white;
+            font-size: 15px;
+            width: 500px;
+        }
+
+        .wrapper .buttons .btn {
+            background: transparent;
+            padding: 15px;
+            font-size: 15px;
+            border: 1px solid royalblue;
+            color: royalblue;
+            border-radius: 5px;
+            margin-top: 15px;
+            width: 130px;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s all ease;
+        }
+
+        .wrapper .buttons .btn1 {
+            background: royalblue;
+            color: white;
+        }
+
+        .wrapper .buttons .btn1:hover {
+            background: transparent;
+            color: royalblue;
+        }
+
+        .wrapper .buttons .btn2:hover {
+            background: royalblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>404</h1>
+        <p>Ooops !!! page not found.we are find the page you are looking for......</p>
+        <div class="buttons">
+            <a href="http://localhost:8080/home">
+                <button class="btn btn1">Back to Home</button>
+            </a>
+            <button class="btn btn2">Report</button>
+        </div>
+    </div>
+</body>
+</html>

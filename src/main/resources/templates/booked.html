@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respone</title>
+
+     <!--Fonts Link-->
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">  
+
+     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+            outline: none;
+        }
+
+        section{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: url("https://www.linkpicture.com/q/BG1.jpg");
+            background-size: cover;
+            background-position: center;
+            
+        }
+
+        body{
+            display: flex;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container{
+            width: 50%;
+            background:transparent;
+            color: white;
+            opacity: 0.9;
+        }
+
+
+        .container form{
+            text-align: center;
+            padding: 25px 20px;
+            width: 100%;
+        }
+
+        form h2{
+            padding: 50px 0;
+            font-size: 3vw;
+        }
+
+        form .Back{
+            margin-top: 5px;
+            border: none;
+            background: #5fbff9;
+            color: #222;
+            padding: 10px 0;
+            width: 100px;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            border-radius: 15px;
+        }
+
+        form .Back:hover{
+            background-color: black;
+            color: white;
+        }
+
+     </style>
+
+</head>
+<body> 
+    
+    <section></section>
+    <div class="container">
+        <form>
+
+            <h2>Seat is already booked!</h2>
+
+            <input type="reset" class="Back" value="Go Back">
+            
+        </form>
+    </div>
+</body>
+</html>
